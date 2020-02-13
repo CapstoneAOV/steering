@@ -1,0 +1,17 @@
+<launch>
+
+  <arg name="address" default="10.5.5.69" doc="hostname or ip address of the PCB responsible for commonunication with steering"/>
+  <arg name="port" default="9" doc="port to send data to"/>
+  <arg name="p" default="0.2" doc="value for P of the PID controller"/>
+  <arg name="i" default="0.2" doc="value for I of the PID controller"/>
+  <arg name="d" default="0" doc="value for the D of the PID controller"/>
+
+  <node pkg="steering" type="steering.py" name="steering" output="screen" >
+    <param name="address" value="$(arg address)"/>
+    <param name="port" value="$(arg port)"/>
+    <param name="p" value="$(arg p)"/>
+    <param name="i" value="$(arg i)"/>
+    <param name="d" value="$(arg d)"/>
+  </node>
+
+</launch>
