@@ -1,6 +1,6 @@
 <launch>
 
-  <arg name="address" default="10.5.5.69" doc="hostname or ip address of the PCB responsible for commonunication with steering"/>
+  <arg name="address" default="10.5.5.53" doc="hostname or ip address of the PCB responsible for commonunication with steering"/>
   <arg name="port" default="9" doc="port to send data to"/>
   <arg name="p" default="0.2" doc="value for P of the PID controller"/>
   <arg name="i" default="0.2" doc="value for I of the PID controller"/>
