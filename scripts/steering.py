@@ -45,15 +45,15 @@ def set_tick():
             time.sleep(0.01)
             current_tick = steeringMotor.currentEncoderTicks()
             
-            if(desired_ticks > current_tick+25):
+            if(desired_ticks > current_tick+100):
                 time.sleep(0.01)            #add delay for pcb communication time
-                steeringMotor.requestTickVelocity(30)
+                steeringMotor.requestTickVelocity(200)
                 time.sleep(0.01)
                 print("desired ticks {0}\t {1} \tpositive".format(desired_ticks,steeringMotor.currentEncoderTicks()))
 
-            elif(desired_ticks < current_tick-25):
+            elif(desired_ticks < current_tick-100):
                 time.sleep(0.01)
-                steeringMotor.requestTickVelocity(-30)
+                steeringMotor.requestTickVelocity(-200)
                 time.sleep(0.01)
                 print("desired ticks {0}\t {1} \tnegative".format(desired_ticks,steeringMotor.currentEncoderTicks()))
             else:
