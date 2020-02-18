@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from ackermann_msgs.msg import AckermannDriveStamped
 import rospy
 import std_msgs
 import motor
@@ -81,12 +82,13 @@ def callback(data):
 
     lock.acquire()
     global desired_ticks
-    desired_ticks = angle_to_ticks(data.data)
+    desired_ticks = angle_to_ticks(data.steering_angle)
+    print("steering angle sent {0}".format(data.steering_angle))
     print("desired ticks {0}".format(desired_ticks)) 
     lock.release()
 
 def listener():
-    rospy.Subscriber("desired_angle", std_msgs.msg.Float32, callback)
+    rospy.Subscriber("rbcar_robot_control/command", AckermannDriveStamped, callback)
     rospy.spin()
 
 def main():
